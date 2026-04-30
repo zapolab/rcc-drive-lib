@@ -9,7 +9,7 @@
 
 ## Description
 
-`rcc-drive-lib` is a Rust library for controlling **ESC** and **RC servo motors** via hardware PWM on Raspberry Pi. It abstracts the low-level PWM duty-cycle math behind a clean, safe API, letting you drive brushless motors and steering servos with a single integer value. 
+`rcc-drive-lib` is a Rust library for controlling **ESC** and **RC servo motors** via hardware PWM on Raspberry Pi. It abstracts the low-level PWM duty-cycle math behind a clean, safe API, letting you drive brushless motors and steering servos with a single integer value.
 Designed for embedded projects running on Raspberry Pi hardware.
 
 ---
