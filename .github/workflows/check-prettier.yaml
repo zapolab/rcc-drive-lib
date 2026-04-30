@@ -10,7 +10,7 @@ jobs:
       - name: Clone the repository
         uses: actions/checkout@v6.0.2
       - name: Run prettier
-        run: prettier --check .
+        run: npx prettier --check .
 
 name: check-prettier.yaml
 
