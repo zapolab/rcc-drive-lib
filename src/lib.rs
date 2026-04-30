@@ -35,8 +35,8 @@ impl ESC {
         Ok(esc)
     }
 
-    pub fn set_throttle(&self, value: i16) -> Result<(), pwm::Error> {
-        let value = (value.clamp(-255, 255) as f64) / 255.0;
+    pub fn set_throttle(&self, value: i8) -> Result<(), pwm::Error> {
+        let value = (value.clamp(-127, 127) as f64) / 127.0;
 
         let pulse;
         if value >= 0.0 {
@@ -98,8 +98,8 @@ impl Servo {
         Ok(servo)
     }
 
-    pub fn set_steer(&self, value: i16) -> Result<(), pwm::Error> {
-        let value = (value.clamp(-255, 255) as f64) / 255.0;
+    pub fn set_steer(&self, value: i8) -> Result<(), pwm::Error> {
+        let value = (value.clamp(-127, 127) as f64) / 127.0;
 
         let pulse;
         if value >= 0.0 {
