@@ -36,8 +36,8 @@ impl ESC {
         Ok(esc)
     }
 
-    pub fn set_throttle(&self, value: i16) -> Result<(), pwm::Error> {
-        let value = f64::from(value.clamp(-255, 255)) / 255.0;
+    pub fn set_throttle(&self, value: i8) -> Result<(), pwm::Error> {
+        let value = f64::from(value.clamp(-127, 127)) / 127.0;
 
         let pulse = if value >= 0.0 {
             self.pulse_neutral + value * (self.pulse_max - self.pulse_neutral)
@@ -97,8 +97,8 @@ impl Servo {
         Ok(servo)
     }
 
-    pub fn set_steer(&self, value: i16) -> Result<(), pwm::Error> {
-        let value = f64::from(value.clamp(-255, 255)) / 255.0;
+    pub fn set_steer(&self, value: i8) -> Result<(), pwm::Error> {
+        let value = f64::from(value.clamp(-127, 127)) / 127.0;
 
         let pulse = if value >= 0.0 {
             (self.pulse_neutral + self.pulse_offset) + value * (self.pulse_max - self.pulse_neutral)
