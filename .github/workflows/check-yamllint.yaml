@@ -1,6 +1,6 @@
 concurrency:
   cancel-in-progress: true
-  group: ${{ forge.ref }}-${{ forge.workflow }}
+  group: ${{ github.ref }}-${{ github.workflow }}
 
 jobs:
   check-yamllint:

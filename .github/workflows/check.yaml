@@ -1,6 +1,6 @@
 concurrency:
   cancel-in-progress: true
-  group: ${{ forge.ref }}-${{ forge.workflow }}
+  group: ${{ github.ref }}-${{ github.workflow }}
 
 jobs:
   check:
@@ -15,8 +15,8 @@ jobs:
         name: Restore the cargo target dir
         uses: actions/cache/restore@v5.0.5
         with:
-          key: ${{ runner.os }}-${{ runner.arch }}-${{ forgejo.run_number }}
-          path: ${{ forge.workspace }}/target
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ githubjo.run_number }}
+          path: ${{ github.workspace }}/target
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-
       - name: Run formatter
@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache/save@v5.0.5
         with:
           key: ${{ steps.cargo-target-restore.outputs.cache-primary-key }}
-          path: ${{ forge.workspace }}/target
+          path: ${{ github.workspace }}/target
 
 name: check.yaml
 
