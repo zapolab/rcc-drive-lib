@@ -26,7 +26,7 @@ impl ESC {
             pulse_neutral,
             pwm: Pwm::with_frequency(
                 Channel::Pwm0,
-                pwm_hz as f64,
+                pwm_hz,
                 pulse_to_duty(pulse_neutral, pwm_hz),
                 Polarity::Normal,
                 true,
@@ -89,7 +89,7 @@ impl Servo {
             pulse_offset,
             pwm: Pwm::with_frequency(
                 Channel::Pwm1,
-                pwm_hz as f64,
+                pwm_hz,
                 pulse_to_duty(pulse_neutral, pwm_hz),
                 Polarity::Normal,
                 true,
