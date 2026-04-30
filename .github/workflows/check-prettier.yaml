@@ -1,18 +1,16 @@
 concurrency:
   cancel-in-progress: true
-  group: ${{ forge.ref }}-${{ forge.workflow }}
+  group: ${{ github.ref }}-${{ github.workflow }}
 
 jobs:
   check-prettier:
-    container:
-      image: git.zarantonello.dev/infra/ci-rust:v1.0.55@sha256:029038ff8f2a50f65a253ead3a7a1948e4d03f8677e017b0a66176db596589bb
     name: Check files formatting
     runs-on: ubuntu-latest
     steps:
       - name: Clone the repository
         uses: actions/checkout@v6.0.2
       - name: Run prettier
-        run: prettier --check .
+        run: npx prettier --check .
 
 name: check-prettier.yaml
 
