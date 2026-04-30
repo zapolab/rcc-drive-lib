@@ -13,7 +13,7 @@ jobs:
         name: Restore the cargo target dir
         uses: actions/cache/restore@v5.0.5
         with:
-          key: ${{ runner.os }}-${{ runner.arch }}-${{ githubjo.run_number }}
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ github.run_number }}
           path: ${{ github.workspace }}/target
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-
