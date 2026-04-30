@@ -1,0 +1,40 @@
+concurrency:
+  cancel-in-progress: true
+  group: ${{ forge.ref }}-${{ forge.workflow }}
+
+jobs:
+  check:
+    container:
+      image: git.zarantonello.dev/infra/ci-rust:v1.0.55@sha256:029038ff8f2a50f65a253ead3a7a1948e4d03f8677e017b0a66176db596589bb
+    name: Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v6.0.2
+      - id: cargo-target-restore
+        name: Restore the cargo target dir
+        uses: actions/cache/restore@v5.0.5
+        with:
+          key: ${{ runner.os }}-${{ runner.arch }}-${{ forgejo.run_number }}
+          path: ${{ forge.workspace }}/target
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-
+      - name: Run formatter
+        run: cargo fmt --check
+      - name: Run linter
+        run: cargo clippy
+      - name: Run types and syntax check
+        run: cargo check
+      - if: always()
+        name: Save the cargo target dir
+        uses: actions/cache/save@v5.0.5
+        with:
+          key: ${{ steps.cargo-target-restore.outputs.cache-primary-key }}
+          path: ${{ forge.workspace }}/target
+
+name: check.yaml
+
+"on":
+  pull_request:
+    branches:
+      - main

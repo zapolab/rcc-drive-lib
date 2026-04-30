@@ -1,0 +1,9 @@
+services:
+  workspace:
+    image: git.zarantonello.dev/infra/ci-rust:v1.0.55@sha256:029038ff8f2a50f65a253ead3a7a1948e4d03f8677e017b0a66176db596589bb
+    volumes:
+      - ..:/workspace:z,cached
+      - cargo-cache:/root/.cargo/registry
+
+volumes:
+  cargo-cache: {}
