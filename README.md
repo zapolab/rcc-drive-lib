@@ -31,7 +31,7 @@ Designed for embedded projects running on Raspberry Pi hardware.
   ```
   dtoverlay=pwm-2chan
   ```
-  > see more in the kernel [https://github.com/raspberrypi/linux/blob/04c8e47067d4873c584395e5cb260b4f170a99ea/arch/arm/boot/dts/overlays/README#L944](docs)
+  > see more in the kernel [docs](https://github.com/raspberrypi/linux/blob/04c8e47067d4873c584395e5cb260b4f170a99ea/arch/arm/boot/dts/overlays/README#L944)
 
 ---
 
